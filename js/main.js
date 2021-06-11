@@ -1,7 +1,7 @@
 import { getTestObjectList } from './utils/create-test-data.js';
-const TEST_OBJECT_NUM = 25;
+//const TEST_OBJECT_NUM = 25;
 
-getTestObjectList (TEST_OBJECT_NUM);
+getTestObjectList ();
 //console.log(getTestObjectList (TEST_OBJECT_NUM));
 // модули:
 //upload-image

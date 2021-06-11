@@ -5,7 +5,7 @@ import { getTestPhotoDescriptionList } from './test-data.js';
 import { getTestPhotoCommentList } from './test-data.js';
 import { getTestNameList } from './test-data.js';
 
-
+const TEST_OBJECT_NUM = 25;
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
 const MIN_AVATAR_NUM = 1;
@@ -31,19 +31,42 @@ function createComment() {
   };
 }
 
-function createTestPicture(index) {
+function randomIdIntervalGenerator (min, max) {
+  const randomList = [];
+
+  const getUnicRandomValue = () => {
+    if (randomList.length >= (max - min + 1)) {
+      //console.log('Достигнута предельная длина массива');
+      return NaN;
+    }
+    let randomValue = getRandomInt(min, max);
+    while (randomList.includes(randomValue)) {
+      randomValue = getRandomInt(min, max);
+    }
+    randomList.push(randomValue);
+    //console.log(randomList);
+    return randomValue;
+  };
+  //!!! возвращаем саму функцию!!!
+  return getUnicRandomValue;
+}
+
+const createTestId = randomIdIntervalGenerator (1, TEST_OBJECT_NUM);
+const createPhotoId = randomIdIntervalGenerator (1, TEST_OBJECT_NUM);
+
+function createTestPicture() {
 
   const commentList = new Array(getRandomInt(MIN_COMMENTS, MAX_COMMENTS)).fill(null).map(() => createComment());
 
   return {
-    id: index + 1,
-    url: `photos/${index + 1}.jpg`,
+    id: createTestId(),
+    url: `photos/${createPhotoId()}.jpg`,
     description: getRandomListValue(getTestPhotoDescriptionList()),
     likes: getRandomInt(MIN_LIKES, MAX_LIKES),
     comments: commentList,
   };
 }
 
-const getTestObjectList = (objectNum) => new Array(objectNum).fill(null).map((value, index) => createTestPicture(index));
+const getTestObjectList = () => new Array(TEST_OBJECT_NUM).fill(null).map(() => createTestPicture());
 
 export { getTestObjectList };
