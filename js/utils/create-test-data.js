@@ -1,5 +1,6 @@
 import { getRandomInt } from './utils-function.js';
 import { getRandomListValue } from './utils-function.js';
+import { randomIdIntervalGenerator } from './utils-function.js';
 
 import { getTestPhotoDescriptionList } from './test-data.js';
 import { getTestPhotoCommentList } from './test-data.js';
@@ -29,26 +30,6 @@ function createComment() {
     message: createMessage(getRandomInt(1, MAX_MESSAGE_PHRASE)),
     name: getRandomListValue(getTestNameList()),
   };
-}
-
-function randomIdIntervalGenerator (min, max) {
-  const randomList = [];
-
-  const getUnicRandomValue = () => {
-    if (randomList.length >= (max - min + 1)) {
-      //console.log('Достигнута предельная длина массива');
-      return NaN;
-    }
-    let randomValue = getRandomInt(min, max);
-    while (randomList.includes(randomValue)) {
-      randomValue = getRandomInt(min, max);
-    }
-    randomList.push(randomValue);
-    //console.log(randomList);
-    return randomValue;
-  };
-  //!!! возвращаем саму функцию!!!
-  return getUnicRandomValue;
 }
 
 const createTestId = randomIdIntervalGenerator (1, TEST_OBJECT_NUM);

@@ -13,6 +13,23 @@ function getRandomListValue(srcList) {
   return srcList[getRandomInt(0, srcList.length - 1)];
 }
 
-export { getRandomInt };
-export { checkStrLenfth };
-export { getRandomListValue };
+function randomIdIntervalGenerator (min, max) {
+  const randomList = [];
+
+  const getUnicRandomValue = () => {
+    if (randomList.length >= (max - min + 1)) {
+      //console.log('Достигнута предельная длина массива');
+      return NaN;
+    }
+    let randomValue = getRandomInt(min, max);
+    while (randomList.includes(randomValue)) {
+      randomValue = getRandomInt(min, max);
+    }
+    randomList.push(randomValue);
+    //console.log(randomList);
+    return randomValue;
+  };
+  //!!! возвращаем саму функцию!!!
+  return getUnicRandomValue;
+}
+export { getRandomInt, checkStrLenfth, getRandomListValue, randomIdIntervalGenerator };

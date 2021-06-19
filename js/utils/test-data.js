@@ -1,6 +1,6 @@
 const TEST_PHOTO_DESCRIPTION_LIST = [
   '... и барабан на шею #misic_night #summer #fun',
-  'Нынче ветренно и солны с перехлетом....',
+  'Нынче ветренно и волны с перехлестом....',
   'Murka, my love',
   'Вот это тачка или Жизнь на даче',
   'Тестим новую камеру! Кот на ней плавает! #camera #test #new #newcameratest',
@@ -43,6 +43,5 @@ const TEST_NAME_LIST = [
 const getTestPhotoDescriptionList = () => TEST_PHOTO_DESCRIPTION_LIST;
 const getTestPhotoCommentList = () => TEST_COMMENT_LIST;
 const getTestNameList = () => TEST_NAME_LIST;
-export { getTestPhotoDescriptionList };
-export { getTestPhotoCommentList };
-export { getTestNameList };
+
+export { getTestPhotoDescriptionList, getTestPhotoCommentList,  getTestNameList };
